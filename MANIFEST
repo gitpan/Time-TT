@@ -1,0 +1,12 @@
+.cvsignore
+Changes
+MANIFEST
+META.yml
+Makefile.PL
+README
+lib/Time/TT.pm
+lib/Time/TT/Agencies.pod
+lib/Time/TT/InterpolatingRealisation.pm
+lib/Time/TT/OffsetKnot.pm
+lib/Time/TT/Realisation.pm
+t/mjd.t
