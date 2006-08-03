@@ -38,7 +38,7 @@ use Date::JD 0.000 qw(mjd_to_cjdn);
 use Math::BigRat 0.04;
 use Time::UTC 0.001 qw(utc_to_tai utc_cjdn_to_day);
 
-our $VERSION = "0.000";
+our $VERSION = "0.001";
 
 use fields qw(x y);
 

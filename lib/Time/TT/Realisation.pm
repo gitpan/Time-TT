@@ -35,18 +35,25 @@ realisation object, see L</SUBCLASSING>.
 
 The principal realisation of TT is International Atomic Time (TAI).
 This is defined retrospectively, in monthly bulletins from the BIPM,
-by its relation to real-time approximations of TAI that are supplied
-in public time signals by tens of metrological agencies around the
-world.  Better realisations of TT are defined further in retrospect,
-and are defined by their relation to TAI.  TAI thus has a pivotal role:
-different realisations of TT can be related to each other by using TAI
-as an intermediate form.
+by its relation to real-time approximations of TAI that are supplied in
+public time signals by tens of metrological agencies around the world.
+Better realisations of TT are defined further in retrospect, and are
+defined by their relation to TAI.  TAI thus has a pivotal role: different
+realisations of TT can be related to each other by using TT(TAI) as an
+intermediate form.
+
+In this interface, instants on the TT scale are represented as a scalar
+number of seconds since the TT epoch, as described in L<Time::TT>.
+All such numbers are represented as C<Math::BigRat> objects.
 
 =cut
 
 package Time::TT::Realisation;
 
-our $VERSION = "0.000";
+use warnings;
+use strict;
+
+our $VERSION = "0.001";
 
 =head1 METHODS
 
@@ -55,12 +62,12 @@ our $VERSION = "0.000";
 =item $rln->to_tai(INSTANT)
 
 Takes an instant expressed on the time scale represented by this object,
-and converts it to an instant on the TAI scale.  The input must be a
-C<Math::BigRat> object, and the result is the same type.
+and converts it to an instant on the TT(TAI) scale.  The input must be
+a C<Math::BigRat> object, and the result is the same type.
 
 =item $rln->from_tai(TAI_INSTANT)
 
-Takes an instant expressed on the TAI scale, and converts it to an
+Takes an instant expressed on the TT(TAI) scale, and converts it to an
 instant on the time scale represented by this object.  The input must
 be a C<Math::BigRat> object, and the result is the same type.
 

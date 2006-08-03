@@ -27,7 +27,7 @@ This module represents instants on the TT time scale as a scalar number
 of SI seconds since an epoch.  This is an appropriate form for all manner
 of calculations.  The TT scale is defined with a well-known point at
 TAI instant 1977-01-01T00:00:00.0.  That instant is assigned the scalar
-value 599616000 exactly, corresponding to an epoch (scalar value zero)
+value 599_616_000 exactly, corresponding to an epoch (scalar value zero)
 near the TAI epoch 1958-01-01T00:00:00.0.  This matches the convention
 used by C<Time::TAI> for instants on the TAI scale.  Because TAI does
 not match the rate of TT perfectly, the TT epoch is not precisely equal
@@ -55,10 +55,13 @@ of TT.
 
 package Time::TT;
 
+use warnings;
+use strict;
+
 use Carp qw(croak);
 use Math::BigRat 0.04;
 
-our $VERSION = "0.000";
+our $VERSION = "0.001";
 
 use base qw(Exporter);
 our @EXPORT_OK = qw(tt_instant_to_mjd tt_mjd_to_instant tt_realisation);

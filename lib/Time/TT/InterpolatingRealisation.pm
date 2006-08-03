@@ -24,7 +24,10 @@ for the interface.
 
 package Time::TT::InterpolatingRealisation;
 
-our $VERSION = "0.000";
+use warnings;
+use strict;
+
+our $VERSION = "0.001";
 
 use base qw(Time::TT::Realisation);
 

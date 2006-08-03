@@ -1,15 +1,18 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         Time-TT
-version:      0.000
+version:      0.001
 version_from: lib/Time/TT.pm
 installdirs:  site
 requires:
     Date::JD:                      0.000
-    LWP:                           5.53_94
-    LWP::UserAgent:                
+    LWP:                           5.5394
+    LWP::UserAgent:                0
     Math::BigRat:                  0.04
-    Math::Interpolator:            0.000
+    Math::Interpolator::Knot:      0.000
+    Math::Interpolator::Linear:    0.000
+    Math::Interpolator::Robust:    0.000
+    Math::Interpolator::Source:    0.000
     Time::UTC:                     0.001
 
 distribution_type: module

@@ -1,3 +1,17 @@
+version 0.001; 2006-08-03
+
+  * list exact required modules in Makefile.PL
+
+  * use "=> 0" instead of "=> undef" in unversioned dependencies in
+    Makefile.PL
+
+  * don't include underscore in string version of module version numbers
+    in Makefile.PL
+
+  * use "warnings" and "strict" pragmas in all modules
+
+  * documentation clarifications
+
 version 0.000; 2006-06-13
 
   * initial released version
