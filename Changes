@@ -1,3 +1,10 @@
+version 0.002; 2007-01-21
+
+  * bugfix: in Time::TT::OffsetKnot, avoid "my __PACKAGE__", for
+    compatibility with perl v5.6
+
+  * typo fix in Time::TT::Agencies documentation
+
 version 0.001; 2006-08-03
 
   * list exact required modules in Makefile.PL

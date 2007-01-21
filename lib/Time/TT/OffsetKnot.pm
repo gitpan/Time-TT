@@ -38,7 +38,7 @@ use Date::JD 0.000 qw(mjd_to_cjdn);
 use Math::BigRat 0.04;
 use Time::UTC 0.001 qw(utc_to_tai utc_cjdn_to_day);
 
-our $VERSION = "0.001";
+our $VERSION = "0.002";
 
 use fields qw(x y);
 
@@ -74,7 +74,7 @@ sub new($$$$) {
 	$frac = "" unless defined $frac;
 	$int = ("0" x $unit).$int;
 	my $pos = length($int) - $unit;
-	my __PACKAGE__ $self = fields::new($class);
+	my Time::TT::OffsetKnot $self = fields::new($class);
 	$self->{x} = $mjd;
 	$self->{y} = $sign.substr($int, 0, $pos).".".substr($int, $pos).$frac;
 	return $self;
@@ -87,7 +87,7 @@ sub new($$$$) {
 use constant BIGRAT_ZERO => Math::BigRat->new(0);
 
 sub x($) {
-	my __PACKAGE__ $self = shift;
+	my Time::TT::OffsetKnot $self = shift;
 	my $x = $self->{x};
 	if(ref($x) eq "") {
 		$x = utc_to_tai(
@@ -100,7 +100,7 @@ sub x($) {
 }
 
 sub y($) {
-	my __PACKAGE__ $self = shift;
+	my Time::TT::OffsetKnot $self = shift;
 	my $y = $self->{y};
 	if(ref($y) eq "") {
 		$y = $self->x - Math::BigRat->new($y);
@@ -122,7 +122,7 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007 Andrew Main (Zefram) <zefram@fysh.org>
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

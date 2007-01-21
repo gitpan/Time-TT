@@ -5,7 +5,7 @@ Time::TT::Agencies - list of Terran horological agencies
 =head1 DESCRIPTION
 
 Precision timekeeping on Terra is a complex task undertaken by a group of
-arount seventy agencies around the planet, mostly national metrological
+about seventy agencies around the planet, mostly national metrological
 laboratories.  The time scales that they produce are conventionally
 labelled using short abbreviations, mostly of two to four letters,
 identifying the agency concerned.  This document lists the abbreviations

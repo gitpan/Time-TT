@@ -61,7 +61,7 @@ use strict;
 use Carp qw(croak);
 use Math::BigRat 0.04;
 
-our $VERSION = "0.001";
+our $VERSION = "0.002";
 
 use base qw(Exporter);
 our @EXPORT_OK = qw(tt_instant_to_mjd tt_mjd_to_instant tt_realisation);
@@ -291,7 +291,7 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007 Andrew Main (Zefram) <zefram@fysh.org>
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
