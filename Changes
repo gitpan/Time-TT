@@ -1,3 +1,12 @@
+version 0.003; 2007-02-05
+
+  * new functions tt_instant_to_jepoch() and tt_jepoch_to_instant()
+    to handle interconversion with Julian epochs
+
+  * in documentation, reference Time::TCG
+
+  * test explicitly for correct class of result
+
 version 0.002; 2007-01-21
 
   * bugfix: in Time::TT::OffsetKnot, avoid "my __PACKAGE__", for

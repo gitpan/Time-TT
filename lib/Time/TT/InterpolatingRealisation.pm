@@ -27,7 +27,7 @@ package Time::TT::InterpolatingRealisation;
 use warnings;
 use strict;
 
-our $VERSION = "0.002";
+our $VERSION = "0.003";
 
 use base qw(Time::TT::Realisation);
 

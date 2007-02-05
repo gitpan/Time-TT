@@ -9,6 +9,11 @@ Time::TT - Terrestrial Time and its realisations
 	$mjd = tt_instant_to_mjd($instant);
 	$instant = tt_mjd_to_instant($mjd);
 
+	use Time::TT qw(tt_instant_to_jepoch tt_jepoch_to_instant);
+
+	$jepoch = tt_instant_to_jepoch($instant);
+	$instant = tt_jepoch_to_instant($jepoch);
+
 	use Time::TT qw(tt_realisation);
 
 	$rln = tt_realisation("bipm05");
@@ -44,6 +49,18 @@ use such day-based notations.  Conversion between this notation and the
 linear count of seconds is supported by this module.  This notation does
 not match the similar day-based notation used for TAI.
 
+There is another conventional way to represent TT instants, using a larger
+unit approximating the duration of a Terran year.  The `Julian year'
+is a nominal period of exactly 365.25 `days' of exactly 86400 SI seconds
+each.  The TT instant 2000-01-01T12:00:00.0 (MJD 51544.5) is labelled as
+Julian epoch 2000.0.  Julian epochs are used only with TT, not with any
+other time scale.  The Julian epoch numbers correspond approximately to
+Gregorian calendar years, for dates within a few kiloyears of the epoch.
+Because TT is not connected to the Terran orbit, and so has no inherent
+concept of a year, the year-based notation is somewhat misleading.
+Conversion between this notation and the linear count of seconds is
+supported by this module.
+
 Because TT is a theoretical time scale, not directly accessible for
 practical use, it must be realised using atomic clocks.  This is done
 by metrological agencies, each with different imperfections.  To achieve
@@ -61,10 +78,14 @@ use strict;
 use Carp qw(croak);
 use Math::BigRat 0.04;
 
-our $VERSION = "0.002";
+our $VERSION = "0.003";
 
 use base qw(Exporter);
-our @EXPORT_OK = qw(tt_instant_to_mjd tt_mjd_to_instant tt_realisation);
+our @EXPORT_OK = qw(
+	tt_instant_to_mjd tt_mjd_to_instant
+	tt_instant_to_jepoch tt_jepoch_to_instant
+	tt_realisation
+);
 
 =head1 FUNCTIONS
 
@@ -97,6 +118,32 @@ C<Math::BigRat> object, and the result is the same type.
 sub tt_mjd_to_instant($) {
 	my($mjd) = @_;
 	return ($mjd - TT_EPOCH_MJD) * 86400;
+}
+
+=item tt_instant_to_jepoch(INSTANT)
+
+Converts from a count of seconds to a Julian epoch.  The input must be
+a C<Math::BigRat> object, and the result is the same type.
+
+=cut
+
+use constant TT_EPOCH_JEPOCH => 1958 + Math::BigRat->new("0.0003725/365.25");
+
+sub tt_instant_to_jepoch($) {
+	my($tt) = @_;
+	return TT_EPOCH_JEPOCH + ($tt / 31557600);
+}
+
+=item tt_jepoch_to_instant(JEPOCH)
+
+Converts from a Julian epoch to a count of seconds.  The input must be
+a C<Math::BigRat> object, and the result is the same type.
+
+=cut
+
+sub tt_jepoch_to_instant($) {
+	my($jepoch) = @_;
+	return ($jepoch - TT_EPOCH_JEPOCH) * 31557600;
 }
 
 =item tt_realisation(NAME)
@@ -282,6 +329,7 @@ machine-readable source of subsequent data.
 
 L<Date::JD>,
 L<Time::TAI>,
+L<Time::TCG>,
 L<Time::TT::Agencies>,
 L<Time::TT::Realisation>
 

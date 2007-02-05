@@ -53,7 +53,7 @@ package Time::TT::Realisation;
 use warnings;
 use strict;
 
-our $VERSION = "0.002";
+our $VERSION = "0.003";
 
 =head1 METHODS
 

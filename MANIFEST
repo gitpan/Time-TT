@@ -9,4 +9,5 @@ lib/Time/TT/Agencies.pod
 lib/Time/TT/InterpolatingRealisation.pm
 lib/Time/TT/OffsetKnot.pm
 lib/Time/TT/Realisation.pm
+t/jepoch.t
 t/mjd.t
