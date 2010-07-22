@@ -1,0 +1,39 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.64.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 60ead8880b33514678dd2060598f7bb151cde101 .cvsignore
+SHA1 b1e3dccbe17261d85b09f4092fd67c549607bf39 Build.PL
+SHA1 622a8350f130ac7ae3ce8bfc4a86374a6a227af2 Changes
+SHA1 bf8a6ddb4ab07835e00b99d045e24a35615f9d8e MANIFEST
+SHA1 8f28fc9923bb2aedc2663d90b6866282a365eebf META.yml
+SHA1 caae608231ffe78390c76451ade51a7cfc87a9f9 Makefile.PL
+SHA1 4eb639d04a08a02cac6b643582591484cf57b096 README
+SHA1 5d51bfc620b918ef74d60d1efab9dab2fab9e7a5 lib/Time/TT.pm
+SHA1 04d82b2436d0409ce80e6e98a0439c08d53ef143 lib/Time/TT/Agencies.pod
+SHA1 60261ea424f7aed6fc6128d61d0a16f74289bf80 lib/Time/TT/InterpolatingRealisation.pm
+SHA1 8371d94d17dd68c21326c36afbb6f965a06389cb lib/Time/TT/OffsetKnot.pm
+SHA1 cebed3509f5de028f2ff0c3ccf671b0bf765ef39 lib/Time/TT/Realisation.pm
+SHA1 e70c49c2c86a90d4ed95186c40fdd78859be0101 t/jepoch.t
+SHA1 86af2f559a9e5129aa5ea527dbbdd0cfdc1a38e0 t/mjd.t
+SHA1 904d9a4f76525e2303e4b0c168c68230f223c8de t/pod_cvg.t
+SHA1 65c75abdef6f01a5d1588a307f2ddfe2333dc961 t/pod_syn.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.9 (GNU/Linux)
+
+iEYEARECAAYFAkxIunMACgkQOV9mt2VyAVFoIQCfWb1L0TfC2Nin3sM8gwuJ0ef9
+O90AnjzeAfybhM03+6vX8bDnnIF3o9JM
+=Bv7Q
+-----END PGP SIGNATURE-----

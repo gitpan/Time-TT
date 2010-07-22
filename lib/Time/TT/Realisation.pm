@@ -50,10 +50,11 @@ All such numbers are represented as C<Math::BigRat> objects.
 
 package Time::TT::Realisation;
 
+{ use 5.006; }
 use warnings;
 use strict;
 
-our $VERSION = "0.003";
+our $VERSION = "0.004";
 
 =head1 METHODS
 
@@ -80,7 +81,7 @@ the result is the same type.
 
 =cut
 
-sub to_realisation($$$) {
+sub to_realisation {
 	my($self, $rln, $t) = @_;
 	return $t if $rln == $self;
 	return $rln->from_tai($self->to_tai($t));
@@ -95,11 +96,13 @@ and the result is the same type.
 
 =cut
 
-sub from_realisation($$$) {
+sub from_realisation {
 	my($self, $rln, $t) = @_;
 	return $t if $rln == $self;
 	return $self->from_tai($rln->to_tai($t));
 }
+
+=back
 
 =head1 SUBCLASSING
 
@@ -121,7 +124,9 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+
+=head1 LICENSE
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

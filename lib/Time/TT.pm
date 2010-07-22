@@ -72,15 +72,16 @@ of TT.
 
 package Time::TT;
 
+{ use 5.006; }
 use warnings;
 use strict;
 
 use Carp qw(croak);
 use Math::BigRat 0.04;
 
-our $VERSION = "0.003";
+our $VERSION = "0.004";
 
-use base qw(Exporter);
+use parent "Exporter";
 our @EXPORT_OK = qw(
 	tt_instant_to_mjd tt_mjd_to_instant
 	tt_instant_to_jepoch tt_jepoch_to_instant
@@ -202,10 +203,11 @@ module is required.
 # general
 #
 
-sub get_bipm_file($) {
+sub _get_bipm_file($) {
 	my($fn) = @_;
-	require LWP::UserAgent;
+	require LWP;
 	LWP->VERSION(5.53_94);
+	require LWP::UserAgent;
 	my $response = LWP::UserAgent->new
 				->get("ftp://ftp2.bipm.fr/pub/tai/$fn");
 	croak "can't download $fn: ".$response->message
@@ -222,18 +224,18 @@ use constant TT_SYNCH_MJD => 43144;
 
 my %tt_bipmnn;
 
-sub tt_bipmnn($) {
+sub _tt_bipmnn($) {
 	my($yr) = @_;
 	my $r = $tt_bipmnn{$yr};
 	return $r if defined $r;
-	my $content = get_bipm_file("scale/ttbipm.$yr");
-	$content =~ /\A\s*TT\(BIPM\d{2,4}\)\ is\ a\ realization/
+	my $content = _get_bipm_file("scale/ttbipm.$yr");
+	$content =~ /\A[\ \t\n]*TT\(BIPM[0-9]{2,4}\)\ is\ a\ realization/
 		or die "doesn't look like a TT(BIPMnn) file\n";
 	require Time::TT::OffsetKnot;
 	my @data;
 	my $last_mjd = 0;
-	while($content =~ /^\ *(\d+)\.(?:[-+]|\ +[-+]?)\d+(?:\.\d+)?
-			   ([-+]|\ +[-+]?)(\d+(?:\.\d+)?)\ *[\r\n]/xmg) {
+	while($content =~ /^\ *([0-9]+)\.(?:[-+]|\ +[-+]?)[0-9]+(?:\.[0-9]+)?
+			   ([-+]|\ +[-+]?)([0-9]+(?:\.[0-9]+)?)\ *[\r\n]/xmg) {
 		my($mjd, $sign, $offset_us) = ($1, $2, $3);
 		die "data out of order at mjd=$mjd" unless $mjd > $last_mjd;
 		if($last_mjd < TT_SYNCH_MJD && $mjd >= TT_SYNCH_MJD) {
@@ -258,10 +260,10 @@ sub tt_bipmnn($) {
 
 my $tt_eal;
 
-sub tt_eal() {
+sub _tt_eal() {
 	return $tt_eal if defined $tt_eal;
-	my $content = get_bipm_file("scale/ealtai04.ar");
-	$content =~ /\A\s*[^\n]*differences between the normalized/i
+	my $content = _get_bipm_file("scale/ealtai04.ar");
+	$content =~ /\A[\ \t\n]*[^\n]*differences between the normalized/i
 		or die "doesn't look like an EAL file\n";
 	require Math::Interpolator::Knot;
 	my @data;
@@ -272,9 +274,10 @@ sub tt_eal() {
 	my $mjd = Math::BigRat->new(43144);
 	my $eal = $tai;
 	my $fdiff_scale = Math::BigRat->new("0.0000000000001");
-	while($content =~ /^\ *\d+\ +[A-Za-z]+\ +\d+\ +-
-			    \ +\d+\ +[A-Za-z]+\ +\d+
-			    \ +(\d+)\ +-\ +(\d+)\ +(\d+(?:\.\d+)?)\s/xmg) {
+	while($content =~ /^\ *[0-9]+\ +[A-Za-z]+\ +[0-9]+\ +-
+			    \ +[0-9]+\ +[A-Za-z]+\ +[0-9]+
+			    \ +([0-9]+)\ +-\ +([0-9]+)
+			    \ +([0-9]+(?:\.[0-9]+)?)[\ \t\n]/xmg) {
 		my($old_mjd, $new_mjd, $fdiff) = ($1, $2, $3);
 		$old_mjd = Math::BigRat->new($old_mjd);
 		die "data not contiguous at mjd=$mjd" unless $old_mjd == $mjd;
@@ -309,10 +312,10 @@ sub tt_realisation($) {
 	if($k =~ m#\Atai(?:/(.+))?\z#si) {
 		require Time::TAI;
 		return Time::TAI::tai_realisation(defined($1) ? $1 : "");
-	} elsif($k =~ m#\Abipm(\d\d)\z#i) {
-		return tt_bipmnn($1);
+	} elsif($k =~ m#\Abipm([0-9][0-9])\z#i) {
+		return _tt_bipmnn($1);
 	} elsif($k =~ m#\Aeal\z#i) {
-		return tt_eal();
+		return _tt_eal();
 	} else {
 		croak "no realisation TT(".uc($k).") known";
 	}
@@ -339,7 +342,9 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+
+=head1 LICENSE
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

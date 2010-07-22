@@ -30,17 +30,16 @@ stored very space-efficiently.  Construction of the knot object is quick.
 
 package Time::TT::OffsetKnot;
 
+{ use 5.006; }
 use warnings;
 use strict;
 
 use Carp qw(croak);
-use Date::JD 0.000 qw(mjd_to_cjdn);
+use Date::JD 0.002 qw(mjd_to_cjdn);
 use Math::BigRat 0.04;
-use Time::UTC 0.001 qw(utc_to_tai utc_cjdn_to_day);
+use Time::UTC 0.005 qw(utc_to_tai utc_cjdn_to_day);
 
-our $VERSION = "0.003";
-
-use fields qw(x y);
+our $VERSION = "0.004";
 
 =head1 CONSTRUCTOR
 
@@ -50,13 +49,13 @@ use fields qw(x y);
 
 Creates and returns an object representing a knot where at the integral
 Modified Julian Date MJD (interpreted according to UTC) the time scale of
-interest differed from TAI by OFFSET * 10**-UNIT seconds.  For example,
+interest differed from TAI by OFFSET * 10^-UNIT seconds.  For example,
 if OFFSET is 43.5 and UNIT is 9 then the time scale differs from TAI by
 43.5 ns.
 
-MJD must be purely a string of digits.  OFFSET must be a string in
-decimal numeric syntax, matching C</[-+]?\d+(?:\.\d+)?/>.  UNIT must
-be non-negative.
+MJD must be purely a string of digits.  OFFSET must be a string
+in decimal numeric syntax, matching C</[-+]?[0-9]+(?:\.[0-9]+)?/>.
+UNIT must be non-negative.
 
 If the OFFSET value is positive then it indicates that the time scale
 is behind TAI.  If the OFFSET value is negative then the time scale is
@@ -66,28 +65,42 @@ to be reversed before passing it to this constructor.
 
 =cut
 
-sub new($$$$) {
+sub new {
 	my($class, $mjd, $offset, $unit) = @_;
-	croak "malformed MJD `$mjd'" unless $mjd =~ /\A\d+\z/;
-	my($sign, $int, $frac) = ($offset =~ /\A([-+]?)(\d+)(?:\.(\d+))?\z/);
+	croak "malformed MJD `$mjd'" unless $mjd =~ /\A[0-9]+\z/;
+	my($sign, $int, $frac) =
+		($offset =~ /\A([-+]?)([0-9]+)(?:\.([0-9]+))?\z/);
 	croak "malformed offset `$offset'" unless defined $int;
 	$frac = "" unless defined $frac;
 	$int = ("0" x $unit).$int;
 	my $pos = length($int) - $unit;
-	my Time::TT::OffsetKnot $self = fields::new($class);
-	$self->{x} = $mjd;
-	$self->{y} = $sign.substr($int, 0, $pos).".".substr($int, $pos).$frac;
-	return $self;
+	return bless({
+		x => $mjd,
+		y => $sign.substr($int, 0, $pos).".".substr($int, $pos).$frac,
+	}, $class);
 }
 
 =back
+
+=head1 METHODS
+
+=over
+
+=item $pt->x
+
+=item $pt->y
+
+=item $pt->role
+
+These methods are part of the standard C<Math::Interpolator::Knot>
+interface.
 
 =cut
 
 use constant BIGRAT_ZERO => Math::BigRat->new(0);
 
-sub x($) {
-	my Time::TT::OffsetKnot $self = shift;
+sub x {
+	my($self) = @_;
 	my $x = $self->{x};
 	if(ref($x) eq "") {
 		$x = utc_to_tai(
@@ -99,8 +112,8 @@ sub x($) {
 	return $x;
 }
 
-sub y($) {
-	my Time::TT::OffsetKnot $self = shift;
+sub y {
+	my($self) = @_;
 	my $y = $self->{y};
 	if(ref($y) eq "") {
 		$y = $self->x - Math::BigRat->new($y);
@@ -109,7 +122,9 @@ sub y($) {
 	return $y;
 }
 
-sub role($) { "KNOT" }
+sub role { "KNOT" }
+
+=back
 
 =head1 SEE ALSO
 
@@ -122,7 +137,9 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+
+=head1 LICENSE
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

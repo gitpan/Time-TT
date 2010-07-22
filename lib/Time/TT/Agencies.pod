@@ -44,6 +44,10 @@ consortium of laboratories in Australia
 
 Bundesamt fur Eich- und Vermessungswesen (Federal Office for Calibration and Surveying), Vienna, Austria
 
+=item B<BIM>
+
+Bulgarian Institute of Metrology, Sofia, Bulgaria
+
 =item B<BIPM>
 
 Bureau international des poids et mesures (International Bureau of Weights and Measures), Sevres, France
@@ -51,6 +55,10 @@ Bureau international des poids et mesures (International Bureau of Weights and M
 =item B<BIRM>
 
 Beijing Institute of Radio Metrology and Measurement, Beijing, People's Republic of China
+
+=item B<BY>
+
+Belarussian State Institute of Metrology, Minsk, Belarus
 
 =item B<CAO>
 
@@ -78,11 +86,15 @@ Communications Research Laboratory, Tokyo, Japan (renamed to NICT in 2004-04)
 
 =item B<CSIR>
 
-Council for Scientific and Industrial Research, Pretoria, South Africa
+Council for Scientific and Industrial Research, Pretoria, South Africa (renamed to ZA in 2007-01)
 
 =item B<DLR>
 
 Deutsche Zentrum fur Luft- und Raumfahrt (German Aerospace Centre), Oberpfaffenhofen, Germany
+
+=item B<DMDM>
+
+Direkcija za mere i dragocene metale (Directorate of Measures and Precious Metals), Belgrade, Serbia
 
 =item B<DPT>
 
@@ -91,6 +103,10 @@ Deutsche Zentrum fur Luft- und Raumfahrt (German Aerospace Centre), Oberpfaffenh
 =item B<DTAG>
 
 Deutsche Telekom AG, Darmstadt, Germany
+
+=item B<EIM>
+
+Ellyniko Institouto Metrologias (Hellenic Institute of Metrology), Thessaloniki, Greece
 
 =item B<F>
 
@@ -126,11 +142,19 @@ Bundesamt fur Kartographie und Geodasie (Federal Agency for Cartography and Geod
 
 =item B<IGMA>
 
-Instituto Geografico Militar (Military Geographic Institute), Buenos Aires, Argentina
+Instituto Geografico Militar (Military Geographic Institute), Buenos Aires, Argentina (renamed to IGNA in 2009-10)
+
+=item B<IGNA>
+
+Instituto Geografico Nacional (National Geographic Institute), Buenos Aires, Argentina
 
 =item B<INPL>
 
 National Physical Laboratory, Jerusalem, Israel
+
+=item B<INTI>
+
+Instituto Nacional de Tecnologia Industrial (National Industrial Technology Institute), Buenos Aires, Argentina
 
 =item B<IPQ>
 
@@ -148,6 +172,10 @@ Joint Atomic Time Commission, Lintong, People's Republic of China
 
 Justervesenet, Norwegian Metrology and Accreditation Service, Kjeller, Norway
 
+=item B<KIM>
+
+Pusat Penelitian Kalibrasi Instrumentasi Dan Metrologi (Research Centre for Calibration Instrumentation and Metrology), Lembaga Ilmu Pengetahuan Indonesia (Indonesian Institute of Sciences), Serpong-Tangerang, Indonesia
+
 =item B<KRIS>
 
 Korea Research Institute of Standards and Science, Daejeon, Republic of Korea
@@ -155,6 +183,10 @@ Korea Research Institute of Standards and Science, Daejeon, Republic of Korea
 =item B<KSRI>
 
 Korea Standards Research Institute, Daejeon, Republic of Korea (renamed to KRIS in 1991-10)
+
+=item B<KZ>
+
+Kazakhstan Institute of Metrology, Astana, Kazakhstan
 
 =item B<LDS>
 
@@ -164,9 +196,17 @@ University of Leeds, Leeds, United Kingdom
 
 Lithuanian National Metrology Institute, Vilnius, Lithuania
 
+=item B<LV>
+
+Latvijas Nacionalais Metrolojiias Centrs (Latvian National Metrology Centre), Riga, Latvia
+
 =item B<MIKE>
 
 Centre for Metrology and Accreditation, Espoo, Finland
+
+=item B<MKEH>
+
+Magyar Kereskedelmi Engedelyezesi Hivatal (Hungarian Trade Licensing Office), Budapest, Hungary
 
 =item B<MSL>
 
@@ -210,7 +250,7 @@ National Institute of Standards and Technology, Boulder, Colorado, United States
 
 =item B<NMC>
 
-National Centre of Metrology, Sofia, Bulgaria
+National Centre of Metrology, Sofia, Bulgaria (renamed to BIM in 2007-01)
 
 =item B<NMIJ>
 
@@ -236,6 +276,10 @@ National Physical Laboratory, New Delhi, India
 
 National Research Council of Canada, Ottawa, Canada
 
+=item B<NRL>
+
+United States Naval Research Laboratory, Washington D.C., United States of America
+
 =item B<NRLM>
 
 National Research Laboratory of Metrology, Tsukuba, Japan (renamed to NMIJ in 2001-12)
@@ -246,7 +290,7 @@ National Time Service Centre of China, Lintong, People's Republic of China
 
 =item B<OMH>
 
-Orszagos Meresugyi Hivatal (National Office of Measures), Budapest, Hungary
+Orszagos Meresugyi Hivatal (National Office of Measures), Budapest, Hungary (renamed to MKEH in 2007-01)
 
 =item B<ONBA>
 
@@ -300,6 +344,14 @@ Standards and Calibration Laboratory, Hong Kong, People's Republic of China
 
 Standards Productivity and Innovation Board, Singapore
 
+=item B<SIQ>
+
+Slovenski institut za kakovost in meroslovje (Slovenian Institute of Quality and Metrology), Ljubljana, Slovenia
+
+=item B<SMD>
+
+Metrology Division of the Quality and Safety Department - Scientific Metrology, Brussels, Belgium
+
 =item B<SMU>
 
 Slovensky metrologicky Ustav (Slovak Institute of Metrology), Bratislava, Slovakia
@@ -344,6 +396,10 @@ Institute of Radio Engineering and Electronics, Academy of Sciences of the Czech
 
 Technischen Universitat Graz (Technical University of Graz), Graz, Austria
 
+=item B<UA>
+
+National Science Center Institute of Metrology, Kharkov, Ukraine
+
 =item B<UME>
 
 Ulusai Metroloji Enstitusu (National Metrology Institute), Marmara Research Centre, Gebze Kocaeli, Turkey
@@ -351,6 +407,10 @@ Ulusai Metroloji Enstitusu (National Metrology Institute), Marmara Research Cent
 =item B<USNO>
 
 United States Naval Observatory, Washington D.C., United States of America
+
+=item B<VMI>
+
+Vietnam Metrology Institute, Ha Noi, Vietnam
 
 =item B<VSL>
 
@@ -360,13 +420,17 @@ Nederlands Meetinstituut Van Swinden Laboratorium, Delft, Netherlands
 
 [no information available]
 
+=item B<ZA>
+
+Council for Scientific and Industrial Research, Pretoria, South Africa
+
 =item B<ZIPE>
 
 [no information available]
 
 =item B<ZMDM>
 
-Zavod za mere i dragocene metale (Bureau of Measures and Precious Metals), Belgrade, Serbia
+Zavod za mere i dragocene metale (Bureau of Measures and Precious Metals), Belgrade, Serbia (renamed to DMDM in 2009-10)
 
 =back
 
@@ -390,9 +454,14 @@ and made the presentation more consistent.
 =head1 COPYRIGHT
 
 It is questionable whether this document is copyrightable, due to its
-essentially functional nature as a collection of raw data.  To the
-extent that the BIPM holds copyright on the file that this is based on,
-reproducing certain aspects of it here is probably fair use.  Andrew Main
-does not claim copyright on any part of this document, and hereby places
-into the public domain any copyrightable aspect of it over which he
-would otherwise hold the copyright.
+essentially functional nature as a collection of raw data.  If there is
+any copyright on the file that this is based on, it is presumably held
+by the BIPM.  Andrew Main does not claim copyright on any part of this
+document, and hereby places into the public domain any copyrightable
+aspect of it over which he would otherwise hold the copyright.
+
+=head1 LICENSE
+
+No license is required to do anything with public domain materials.
+To the extent that the BIPM holds copyright on the file that this is
+based on, reproducing certain aspects of it here is probably fair use.

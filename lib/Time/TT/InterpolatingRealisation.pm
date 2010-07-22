@@ -24,12 +24,13 @@ for the interface.
 
 package Time::TT::InterpolatingRealisation;
 
+{ use 5.006; }
 use warnings;
 use strict;
 
-our $VERSION = "0.003";
+our $VERSION = "0.004";
 
-use base qw(Time::TT::Realisation);
+use parent "Time::TT::Realisation";
 
 =head1 CONSTRUCTOR
 
@@ -57,17 +58,31 @@ interpolator.
 
 =cut
 
-sub new($$) {
+sub new {
 	my($class, $interpolator) = @_;
 	return bless(\$interpolator, $class);
 }
 
-sub to_tai($$) {
+=back
+
+=head1 METHODS
+
+=over
+
+=item $rln->to_tai(INSTANT)
+
+=item $rln->from_tai(TAI_INSTANT)
+
+These methods are part of the standard C<Time::TT::Realisation> interface.
+
+=cut
+
+sub to_tai {
 	my($self, $t) = @_;
 	return ${$self}->x($t);
 }
 
-sub from_tai($$) {
+sub from_tai {
 	my($self, $t) = @_;
 	return ${$self}->y($t);
 }
@@ -88,7 +103,9 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+
+=head1 LICENSE
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
