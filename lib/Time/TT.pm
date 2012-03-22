@@ -77,9 +77,9 @@ use warnings;
 use strict;
 
 use Carp qw(croak);
-use Math::BigRat 0.04;
+use Math::BigRat 0.13;
 
-our $VERSION = "0.004";
+our $VERSION = "0.005";
 
 use parent "Exporter";
 our @EXPORT_OK = qw(
@@ -205,14 +205,9 @@ module is required.
 
 sub _get_bipm_file($) {
 	my($fn) = @_;
-	require LWP;
-	LWP->VERSION(5.53_94);
-	require LWP::UserAgent;
-	my $response = LWP::UserAgent->new
-				->get("ftp://ftp2.bipm.fr/pub/tai/$fn");
-	croak "can't download $fn: ".$response->message
-		unless $response->code == 200;
-	return $response->content;
+	require Net::FTP::Tiny;
+	Net::FTP::Tiny->VERSION(0.001);
+	return Net::FTP::Tiny::ftp_get("ftp://ftp2.bipm.fr/pub/tai/$fn");
 }
 
 #
@@ -232,6 +227,7 @@ sub _tt_bipmnn($) {
 	$content =~ /\A[\ \t\n]*TT\(BIPM[0-9]{2,4}\)\ is\ a\ realization/
 		or die "doesn't look like a TT(BIPMnn) file\n";
 	require Time::TT::OffsetKnot;
+	Time::TT::OffsetKnot->VERSION(0.005);
 	my @data;
 	my $last_mjd = 0;
 	while($content =~ /^\ *([0-9]+)\.(?:[-+]|\ +[-+]?)[0-9]+(?:\.[0-9]+)?
@@ -240,6 +236,7 @@ sub _tt_bipmnn($) {
 		die "data out of order at mjd=$mjd" unless $mjd > $last_mjd;
 		if($last_mjd < TT_SYNCH_MJD && $mjd >= TT_SYNCH_MJD) {
 			require Math::Interpolator::Knot;
+			Math::Interpolator::Knot->VERSION(0.003);
 			push @data, Math::Interpolator::Knot
 					->new(TT_SYNCH_TIME, TT_SYNCH_TIME);
 		}
@@ -248,7 +245,9 @@ sub _tt_bipmnn($) {
 		$last_mjd = $mjd;
 	}
 	require Math::Interpolator::Robust;
+	Math::Interpolator::Robust->VERSION(0.003);
 	require Time::TT::InterpolatingRealisation;
+	Time::TT::InterpolatingRealisation->VERSION(0.005);
 	$r = Time::TT::InterpolatingRealisation->new(
 		Math::Interpolator::Robust->new(@data));
 	return $tt_bipmnn{$yr} = $r;
@@ -266,6 +265,7 @@ sub _tt_eal() {
 	$content =~ /\A[\ \t\n]*[^\n]*differences between the normalized/i
 		or die "doesn't look like an EAL file\n";
 	require Math::Interpolator::Knot;
+	Math::Interpolator::Knot->VERSION(0.003);
 	my @data;
 	my $tai = Math::BigRat->new(-94694400);   # 1955-01-01
 	push @data, Math::Interpolator::Knot->new($tai, $tai);
@@ -293,11 +293,14 @@ sub _tt_eal() {
 	$tai += 1000000;
 	$eal += 1000000;
 	require Math::Interpolator::Source;
+	Math::Interpolator::Source->VERSION(0.003);
 	push @data, Math::Interpolator::Source->new(
 			sub () { croak "later data for TT(EAL) is missing"; },
 			$tai, $eal);
 	require Math::Interpolator::Linear;
+	Math::Interpolator::Linear->VERSION(0.003);
 	require Time::TT::InterpolatingRealisation;
+	Time::TT::InterpolatingRealisation->VERSION(0.005);
 	$tt_eal = Time::TT::InterpolatingRealisation->new(
 			Math::Interpolator::Linear->new(@data));
 	return $tt_eal;
@@ -313,7 +316,8 @@ sub tt_realisation($) {
 		require Time::TAI;
 		return Time::TAI::tai_realisation(defined($1) ? $1 : "");
 	} elsif($k =~ m#\Abipm([0-9][0-9])\z#i) {
-		return _tt_bipmnn($1);
+		my $yr = $1;
+		return _tt_bipmnn($yr);
 	} elsif($k =~ m#\Aeal\z#i) {
 		return _tt_eal();
 	} else {
@@ -342,7 +346,8 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010, 2012
+Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE
 

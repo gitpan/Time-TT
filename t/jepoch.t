@@ -5,7 +5,7 @@ use Test::More tests => 7;
 
 BEGIN { use_ok "Time::TT", qw(tt_instant_to_jepoch tt_jepoch_to_instant); }
 
-use Math::BigRat 0.04;
+use Math::BigRat 0.13;
 
 sub match($$) {
 	my($a, $b) = @_;

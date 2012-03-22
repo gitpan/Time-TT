@@ -3,7 +3,7 @@ abstract: 'Terrestrial Time and its realisations'
 author:
   - 'Andrew Main (Zefram) <zefram@fysh.org>'
 build_requires:
-  Math::BigRat: 0.04
+  Math::BigRat: 0.13
   Module::Build: 0
   Test::More: 0
   perl: 5.006
@@ -14,9 +14,8 @@ configure_requires:
   perl: 5.006
   strict: 0
   warnings: 0
-distribution_type: module
 dynamic_config: 0
-generated_by: 'Module::Build version 0.3607'
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.112621'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -25,28 +24,27 @@ name: Time-TT
 provides:
   Time::TT:
     file: lib/Time/TT.pm
-    version: 0.004
+    version: 0.005
   Time::TT::InterpolatingRealisation:
     file: lib/Time/TT/InterpolatingRealisation.pm
-    version: 0.004
+    version: 0.005
   Time::TT::OffsetKnot:
     file: lib/Time/TT/OffsetKnot.pm
-    version: 0.004
+    version: 0.005
   Time::TT::Realisation:
     file: lib/Time/TT/Realisation.pm
-    version: 0.004
+    version: 0.005
 requires:
   Carp: 0
-  Date::JD: 0.002
+  Date::JD: 0.005
   Exporter: 0
-  LWP: 5.5394
-  LWP::UserAgent: 0
-  Math::BigRat: 0.04
-  Math::Interpolator::Knot: 0
-  Math::Interpolator::Linear: 0
-  Math::Interpolator::Robust: 0
-  Math::Interpolator::Source: 0
-  Time::UTC: 0.005
+  Math::BigRat: 0.13
+  Math::Interpolator::Knot: 0.003
+  Math::Interpolator::Linear: 0.003
+  Math::Interpolator::Robust: 0.003
+  Math::Interpolator::Source: 0.003
+  Net::FTP::Tiny: 0.001
+  Time::UTC: 0.007
   constant: 0
   parent: 0
   perl: 5.006
@@ -54,4 +52,4 @@ requires:
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.004
+version: 0.005

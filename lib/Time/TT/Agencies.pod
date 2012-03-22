@@ -66,7 +66,7 @@ Stazione Astronomica di Cagliari (Cagliari Astronomical Observatory), Cagliari, 
 
 =item B<CH>
 
-Metrology and Accreditation (METAS), Switzerland
+Metrology and Accreditation (METAS), Bern, Switzerland
 
 =item B<CNM>
 
@@ -102,7 +102,7 @@ Direkcija za mere i dragocene metale (Directorate of Measures and Precious Metal
 
 =item B<DTAG>
 
-Deutsche Telekom AG, Darmstadt, Germany
+Deutsche Telekom AG, Frankfurt am Main, Germany
 
 =item B<EIM>
 
@@ -172,6 +172,10 @@ Joint Atomic Time Commission, Lintong, People's Republic of China
 
 Justervesenet, Norwegian Metrology and Accreditation Service, Kjeller, Norway
 
+=item B<KEBS>
+
+Kenya Bureau of Standards, Nairobi, Kenya
+
 =item B<KIM>
 
 Pusat Penelitian Kalibrasi Instrumentasi Dan Metrologi (Research Centre for Calibration Instrumentation and Metrology), Lembaga Ilmu Pengetahuan Indonesia (Indonesian Institute of Sciences), Serpong-Tangerang, Indonesia
@@ -214,11 +218,11 @@ Measurement Standards Laboratory, Lower Hutt, New Zealand
 
 =item B<NAO>
 
-National Astronomical Observatory, Misuzawa, Japan
+National Astronomical Observatory, Mizusawa, Japan
 
 =item B<NAOM>
 
-National Astronomical Observatory, Misuzawa, Japan (renamed to NAO in 1997-01)
+National Astronomical Observatory, Mizusawa, Japan (renamed to NAO in 1997-01)
 
 =item B<NAOT>
 
@@ -238,7 +242,7 @@ National Institute of Metrology, Bucharest, Romania
 
 =item B<NIMT>
 
-National Institute of Metrology, Bangkok, Thailand
+National Institute of Metrology, Pathumthani, Thailand
 
 =item B<NIS>
 

@@ -28,8 +28,9 @@ package Time::TT::InterpolatingRealisation;
 use warnings;
 use strict;
 
-our $VERSION = "0.004";
+our $VERSION = "0.005";
 
+use Time::TT::Realisation 0.005 ();
 use parent "Time::TT::Realisation";
 
 =head1 CONSTRUCTOR
@@ -103,7 +104,8 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010, 2012
+Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE
 

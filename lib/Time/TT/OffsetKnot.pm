@@ -35,11 +35,11 @@ use warnings;
 use strict;
 
 use Carp qw(croak);
-use Date::JD 0.002 qw(mjd_to_cjdn);
-use Math::BigRat 0.04;
-use Time::UTC 0.005 qw(utc_to_tai utc_cjdn_to_day);
+use Date::JD 0.005 qw(mjd_to_cjdnn);
+use Math::BigRat 0.13;
+use Time::UTC 0.007 qw(utc_to_tai utc_cjdn_to_day);
 
-our $VERSION = "0.004";
+our $VERSION = "0.005";
 
 =head1 CONSTRUCTOR
 
@@ -104,7 +104,7 @@ sub x {
 	my $x = $self->{x};
 	if(ref($x) eq "") {
 		$x = utc_to_tai(
-			utc_cjdn_to_day(mjd_to_cjdn(
+			utc_cjdn_to_day(mjd_to_cjdnn(
 				Math::BigRat->new($x), BIGRAT_ZERO)),
 			BIGRAT_ZERO);
 		$self->{x} = $x;
@@ -137,7 +137,8 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010, 2012
+Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE
 

@@ -54,7 +54,7 @@ package Time::TT::Realisation;
 use warnings;
 use strict;
 
-our $VERSION = "0.004";
+our $VERSION = "0.005";
 
 =head1 METHODS
 
@@ -124,7 +124,8 @@ Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006, 2007, 2010 Andrew Main (Zefram) <zefram@fysh.org>
+Copyright (C) 2006, 2007, 2010, 2012
+Andrew Main (Zefram) <zefram@fysh.org>
 
 =head1 LICENSE
 

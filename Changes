@@ -1,3 +1,37 @@
+version 0.005; 2012-03-22
+
+  * bugfix: require bugfixed version of Math::BigRat (for construction
+    from decimal fraction strings)
+
+  * bugfix: require bugfixed version of Time::UTC (for requiring working
+    version of Math::BigRat)
+
+  * bugfix: require bugfixed version of Math::Interpolator (for correct
+    searching)
+
+  * use Net::FTP::Tiny instead of heavyweight LWP
+
+  * use new context-independent version of Date::JD function
+
+  * avoid latent bug of passing magic variables $1 et al into functions
+    where in the future they might unexpectedly change value
+
+  * in Time::TT::Agencies documentation, note new agency KEBS
+
+  * in Time::TT::Agencies documentation, note new locations for DTAG
+    and NIMT
+
+  * in Time::TT::Agencies documentation, note location for CH
+
+  * in Time::TT::Agencies documentation, correct spelling of location
+    for NAO/NAOM
+
+  * include META.json in distribution
+
+  * convert .cvsignore to .gitignore
+
+  * add MYMETA.json to .cvsignore
+
 version 0.004; 2010-07-22
 
   * bugfix: require bugfixed versions of Date::JD and Time::UTC (for
